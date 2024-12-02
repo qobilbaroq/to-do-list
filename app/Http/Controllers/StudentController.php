@@ -100,8 +100,9 @@ class StudentController extends Controller
     {
         $student = new ListStudent;
         $data = $student->find($id);
-        $path = public_path($data->photo_profile_name);
-        File::delete($data->photo_profile);
+        $path = public_path('upload/profile/' . $data->photo_profile_name);
+        
+        File::delete($path);
 
         $data->delete();
 
